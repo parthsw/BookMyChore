@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "196161436098",
+    "firebase_url": "https://bookmychore-2dbae.firebaseio.com",
+    "project_id": "bookmychore-2dbae",
+    "storage_bucket": "bookmychore-2dbae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196161436098:android:e4460c31d68f33acde3e5b",
+        "android_client_info": {
+          "package_name": "com.book.chore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196161436098-092id7lvb87c7q16avcc5opksd88agub.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.book.chore",
+            "certificate_hash": "f4672a9f09b02a4f61e048974429aef831e0ccee"
+          }
+        },
+        {
+          "client_id": "196161436098-4998o8ej51n2vihu0ihl2v5sgr1j1t6e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgi85yxiTAmuGE8zqDln14HDGNGV7YRg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196161436098-4998o8ej51n2vihu0ihl2v5sgr1j1t6e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

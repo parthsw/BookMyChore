@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data class="ProfileBinding" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/loginForm"
+            layout="@layout/login_form" />
+
+        <ScrollView
+            android:id="@+id/profileForm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/screen_margin">
+
+            <include layout="@layout/profile_form" />
+
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnUpdateProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorAccent"
+            android:text="@string/update"
+            android:textColor="@android:color/white" />
+
+        <ProgressBar
+            android:id="@+id/updateProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+</layout>
