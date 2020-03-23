@@ -3,6 +3,7 @@ package com.book.chore.ui.login
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
+import com.book.chore.R
 import com.book.chore.data.User.UserManager
 import com.book.chore.databinding.LoginFormBinding
 import com.book.chore.ui.login.home.HomeActivity
@@ -25,8 +26,13 @@ class LoginViewHolder {
                         )
                         context.startActivity(Intent(context, HomeActivity::class.java))
                         finishActivity()
+                        Toast.makeText(context, "Successfully Logged in", Toast.LENGTH_LONG).show()
                     } else {
-                        Toast.makeText(context, "FAILED", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            context,
+                            context.resources.getString(R.string.loginFailed),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
             }

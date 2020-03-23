@@ -1,8 +1,12 @@
 package com.book.chore.data.User
 
+import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
 import com.book.chore.databinding.ProfileBinding
 import com.book.chore.events.UserCreationEvent
 import com.book.chore.events.UserSignInResultEvent
+import com.book.chore.ui.login.LoginActivity
+import com.book.chore.ui.login.home.HomeActivity
 import com.book.chore.utils.BasePrefs
 import com.book.chore.utils.ChoreConstants
 import com.google.firebase.firestore.FirebaseFirestore
@@ -94,6 +98,16 @@ class UserManager {
                 if (document != null) {
                     val choreUser = document.toObject(ChoreUser::class.java)
                     choreUser?.userID = userId
+                    BasePrefs.putValue(
+                        ChoreConstants.PrefNames.PREF_NAME_USER,
+                        ChoreConstants.PrefKeys.PREF_KEY_LOGGED_IN,
+                        true
+                    )
+                    BasePrefs.putValue(
+                        ChoreConstants.PrefNames.PREF_NAME_USER,
+                        ChoreConstants.PrefKeys.PREF_KEY_LOGGED_IN_USER_ID,
+                        userId
+                    )
                     choreUser?.let {
                         FirebaseFirestore.getInstance()
                             .collection(ChoreConstants.Collections.CHORE_USERS)
@@ -138,5 +152,21 @@ class UserManager {
             .document(user.userID).set(user).addOnCompleteListener {
                 updateResult()
             }
+    }
+
+    fun logout() {
+        BasePrefs.removeKey(
+            ChoreConstants.PrefNames.PREF_NAME_USER,
+            ChoreConstants.PrefKeys.PREF_KEY_SKIPPED_LOGIN
+        )
+        BasePrefs.removeKey(
+            ChoreConstants.PrefNames.PREF_NAME_USER,
+            ChoreConstants.PrefKeys.PREF_KEY_LOGGED_IN
+        )
+        BasePrefs.removeKey(
+            ChoreConstants.PrefNames.PREF_NAME_USER,
+            ChoreConstants.PrefKeys.PREF_KEY_LOGGED_IN_USER_ID
+        )
+
     }
 }

@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">Chore</string>
+    <string name="app_name">BookMyChore</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_out">Sign out</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
     <string name="title_bookings">Bookings</string>
@@ -26,4 +26,17 @@
     <string name="book_my_chore">BookMyChore</string>
     <string name="select_location">Select Location</string>
     <string name="skip_for_now">Skip for now</string>
+    <string name="updateSuccess">Profile successfully updated</string>
+    <string name="register_success">Registration Successful</string>
+    <string name="logout_success">You\'ve successfully logged out</string>
+
+    <!-- Image content descriptions -->
+    <string name="splash_c_d">image on the splash screen</string>
+    <string name="login_logo_c_d">logo on login screen</string>
+
+    <!-- Validation Errors -->
+    <string name="invalidEmail">Please enter a valid email</string>
+    <string name="loginFailed">Incorrect email address or password</string>
+    <string name="invalidPhone">Please enter a valid phone number</string>
+    <string name="registerFailed">Unable to register. Please try again.</string>
 </resources>

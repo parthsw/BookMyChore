@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data class="LoginBinding" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
-        tools:context="com.book.chore.ui.login.LoginActivity">
+        tools:context="com.book.chore.ui.login.LoginActivity"
+        android:background="@color/colorBackground">
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/imageView"-->
+        <!--            android:layout_width="100dp"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:layout_gravity="center_horizontal|center_vertical"-->
+        <!--            android:contentDescription="@string/login_logo_c_d"-->
+        <!--            app:srcCompat="@drawable/logo" />-->
 
         <TextView
             android:id="@+id/btnSkipLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/montserrat"
+            android:padding="8dp"
             android:text="@string/skip_for_now"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/white" />
 
         <include
             android:id="@+id/loginForm"
