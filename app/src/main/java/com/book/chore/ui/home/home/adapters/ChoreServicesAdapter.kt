@@ -7,8 +7,13 @@ import com.book.chore.data.ChoreServices.ChoreService
 import com.book.chore.databinding.ViewHolderChoreServiceBinding
 import com.book.chore.ui.home.home.adapters.viewholder.ChoreServiceViewHolder
 
-class ChoreServicesAdapter(private val choreServicesList: MutableList<ChoreService>) :
+class ChoreServicesAdapter(private val choreServicesList: MutableList<ChoreService>, private val clickListener: OnItemClickListener) :
     RecyclerView.Adapter<ChoreServiceViewHolder>() {
+    private var listener: OnItemClickListener? = null
+
+    init {
+        this.listener = clickListener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChoreServiceViewHolder {
         return ChoreServiceViewHolder(
@@ -25,6 +30,10 @@ class ChoreServicesAdapter(private val choreServicesList: MutableList<ChoreServi
     }
 
     override fun onBindViewHolder(holder: ChoreServiceViewHolder, position: Int) {
-        holder.bind(choreServicesList[position])
+        holder.bind(choreServicesList[position], listener)
     }
+}
+
+interface OnItemClickListener {
+    fun onItemClick(item: ChoreService?)
 }
