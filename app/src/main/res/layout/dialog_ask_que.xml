@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+<TextView
+    android:id="@+id/tv_header"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Ask your Question"
+    android:textSize="16dp"
+    android:textStyle="bold"
+    android:textColor="@color/colorAccent"
+    android:layout_centerHorizontal="true"
+    />
+
+<EditText
+    android:layout_below="@+id/tv_header"
+    android:id="@+id/ed_user_query_dialog"
+    android:layout_width="match_parent"
+    android:layout_marginTop="30dp"
+    style="@style/Edittext"
+    android:fontFamily="@font/montserrat"
+    android:layout_centerHorizontal="true"
+    android:layout_height="wrap_content"
+    android:lines="4"
+    android:hint="@string/user_question"
+    android:inputType="textMultiLine" />
+<Button
+    android:id="@+id/submit_query"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Submit query"
+    android:padding="10dp"
+    android:layout_below="@+id/ed_user_query_dialog"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="20dp"
+    android:background="@color/colorAccent"
+    android:textColor="#ffffff"
+
+
+    />
+</RelativeLayout>

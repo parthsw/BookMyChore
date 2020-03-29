@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+    <TextView
+        android:id="@+id/tv_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rating &amp; Review"
+        android:layout_centerHorizontal="true"
+        android:textSize="16dp"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"/>
+    <RatingBar
+        android:id="@+id/ratingbar"
+        android:layout_below="@+id/tv_heading"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        />
+
+    <EditText
+        android:id="@+id/user_review"
+        android:hint="Write about your experiance with this application"
+      android:paddingLeft="20dp"
+        style="@style/Edittext"
+        android:paddingRight="20dp"
+        android:fontFamily="@font/montserrat"
+        android:layout_below="@+id/ratingbar"
+        android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        />
+    <Button
+        android:id="@+id/btn_submit_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/user_review"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorAccent"
+        android:textColor="#ffffff"
+        android:padding="10dp"
+        android:text="Submit"/>
+
+
+
+
+
+</RelativeLayout>

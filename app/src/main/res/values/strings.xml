@@ -27,6 +27,7 @@
     <string name="select_location">Select Location</string>
     <string name="skip_for_now">Skip for now</string>
     <string name="updateSuccess">Profile successfully updated</string>
+    <string name="user_question">If you have not found your answer.you can ask here.</string>
     <string name="register_success">Registration Successful</string>
     <string name="logout_success">You\'ve successfully logged out</string>
 
@@ -39,4 +40,12 @@
     <string name="loginFailed">Incorrect email address or password</string>
     <string name="invalidPhone">Please enter a valid phone number</string>
     <string name="registerFailed">Unable to register. Please try again.</string>
+
+    <!-- about app -->
+    <string name="about_us_info">Book My Chore is an Android application that
+provides on-demand location-based household services to users. The application
+intends to improve the work-life balance of individuals who might find it challenging
+to manage their work, family, and household chores by providing a platform in the
+form of an android smartphone application</string>
+
 </resources>

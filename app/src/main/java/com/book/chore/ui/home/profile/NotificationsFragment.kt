@@ -1,6 +1,10 @@
 package com.book.chore.ui.home.profile
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -19,14 +23,20 @@ import com.book.chore.databinding.ProfileBinding
 import com.book.chore.ui.login.LoginActivity
 import com.book.chore.ui.login.LoginViewHolder
 import com.book.chore.utils.ChoreValidators
+import kotlinx.android.synthetic.main.profile_form.*
 import kotlinx.android.synthetic.main.profile_form.view.*
+import kotlinx.android.synthetic.main.profile_form.view.edtUserAddress
+import kotlinx.android.synthetic.main.profile_form.view.edtUserEmail
+import kotlinx.android.synthetic.main.profile_form.view.edtUserMobile
+import kotlinx.android.synthetic.main.profile_form.view.edtUserName
+import kotlinx.android.synthetic.main.profile_form.view.edtUserPassword
 import java.lang.Exception
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: ProfileBinding
     private var user: ChoreUser? = null
-
+    var obj=Validatedata()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,7 +52,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun renderViews() {
-        binding.updateProgress.visibility = View.GONE
+                binding.updateProgress.visibility = View.GONE
         if (UserManager().isUserLoggedIn()) {
             binding.loginForm.container.visibility = View.GONE
             binding.profileForm.visibility = View.VISIBLE
@@ -53,44 +63,67 @@ class ProfileFragment : Fragment() {
                 user = it
             }
             binding.btnUpdateProfile.setOnClickListener {
-                user?.let { it1 ->
-                    binding.updateProgress.visibility = View.VISIBLE
-                    binding.btnUpdateProfile.visibility = View.GONE
-                    UserManager().updateUserProfile(it1) {
-                        binding.updateProgress.visibility = View.GONE
-                        binding.btnUpdateProfile.visibility = View.VISIBLE
-                        Toast.makeText(
-                            context,
-                            resources.getString(R.string.updateSuccess),
-                            Toast.LENGTH_SHORT
-                        ).show()
+
+                if (obj.validatepassword(edtUserPassword.text.toString())!="perfect")
+                {
+                    edtUserPassword.setError(obj.validatepassword(edtUserPassword.text.toString()))
+                }
+                else if (obj.validateemail(edtUserEmail.text.toString())!="perfect")
+                {
+                    edtUserEmail.setError(obj.validateemail(edtUserEmail.text.toString()))
+                }
+                else if (obj.validatemobileno(edtUserMobile.text.toString())!="perfect")
+                {
+                    edtUserMobile.setError(obj.validatemobileno(edtUserMobile.text.toString()))
+                }
+                else if(obj.validateusername(edtUserName.text.toString())!="perfect")
+                {
+                    edtUserName.setError(obj.validateusername(edtUserName.text.toString()))
+                }
+                else if(obj.validateaddress(edtUserAddress.text.toString())!="perfect")
+                {
+                    edtUserAddress.setError(obj.validateaddress(edtUserAddress.text.toString()))
+                }
+                else {
+                    user?.let { it1 ->
+                        binding.updateProgress.visibility = View.VISIBLE
+                        binding.btnUpdateProfile.visibility = View.GONE
+                        UserManager().updateUserProfile(it1) {
+                            binding.updateProgress.visibility = View.GONE
+                            binding.btnUpdateProfile.visibility = View.VISIBLE
+                        }
                     }
+                }
+                binding.profileForm.edtUserName.addTextChangedListener { username ->
+                    user?.userDisplayName = username.toString()
+                }
+                binding.profileForm.edtUserEmail.addTextChangedListener { userEmail ->
+                    user?.userEmail = userEmail.toString()
+                }
+                binding.profileForm.edtUserMobile.addTextChangedListener { userMobile ->
+                    user?.userMobile = userMobile.toString()
+                }
+                binding.profileForm.edtUserPassword.addTextChangedListener { userPassword ->
+                    user?.userPassword = userPassword.toString()
+                }
+                binding.profileForm.edtUserAddress.addTextChangedListener { userAddress ->
+                    user?.userAddress = userAddress.toString()
                 }
             }
 
+
             binding.btnLogout.setOnClickListener {
-                UserManager().logout()
 
-                Toast.makeText(
-                    context,
-                    resources.getString(R.string.logout_success),
-                    Toast.LENGTH_SHORT
-                ).show()
 
-                val intent = Intent(getActivity(), LoginActivity::class.java)
-                getActivity()?.startActivity(intent)
-            }
-            binding.profileForm.edtUserEmail.addTextChangedListener { userEmail ->
-                user?.userEmail = userEmail.toString()
-            }
-            binding.profileForm.edtUserMobile.addTextChangedListener { userMobile ->
-                user?.userMobile = userMobile.toString()
-            }
-            binding.profileForm.edtUserPassword.addTextChangedListener { userPassword ->
-                user?.userPassword = userPassword.toString()
-            }
-            binding.profileForm.edtUserAddress.addTextChangedListener { userAddress ->
-                user?.userAddress = userAddress.toString()
+                val sharedPreferences: SharedPreferences?= activity?.getSharedPreferences("user_prefs",
+                    Context.MODE_PRIVATE)
+                val editor = sharedPreferences?.edit()
+                editor?.clear()
+                editor?.apply()
+                Toast.makeText(activity,"Successfully logout from the application",Toast.LENGTH_SHORT).show()
+                val intent = Intent(activity, LoginActivity::class.java)
+                startActivity(intent)
+
             }
 
         } else {

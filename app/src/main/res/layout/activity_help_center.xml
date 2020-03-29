@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android" >
+
+            <TextView
+                android:id="@+id/tv0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Booking Related Query"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"/>
+
+            <ExpandableListView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/expandableview"
+                android:layout_below="@+id/tv0"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:context=".ui.home.help.Faq_activity">
+            </ExpandableListView>
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_below="@+id/expandableview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Payment related query"
+                    android:textSize="16dp"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                   />
+                <ExpandableListView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/expandableview0"
+                    android:layout_below="@+id/tv1"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:context=".ui.home.help.Faq_activity">
+                </ExpandableListView>
+
+                <TextView
+                    android:id="@+id/tv02"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/expandableview0"
+                    android:text="Still have question?"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/colorAccent"
+                    />
+                <EditText
+                    android:id="@+id/ed_user_question"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                />
+                <Button
+                    android:id="@+id/btn_submit_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ask your question"
+                    android:textSize="14dp"
+                    android:padding="10dp"
+                    android:layout_below="@+id/tv02"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/colorAccent"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="10dp"/>
+
+         </RelativeLayout>
+
+

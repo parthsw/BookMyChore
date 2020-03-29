@@ -5,6 +5,7 @@ object ChoreConstants {
         companion object {
             const val CHORE_USERS = "users"
             const val CHORE_SERVICES = "services"
+
         }
     }
 

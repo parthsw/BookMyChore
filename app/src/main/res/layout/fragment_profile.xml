@@ -1,58 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data class="ProfileBinding" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/loginForm"
-            layout="@layout/login_form" />
 
-        <ScrollView
-            android:id="@+id/profileForm"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/screen_margin">
+            android:layout_height="match_parent">
 
-            <include layout="@layout/profile_form" />
+            <include
+                android:id="@+id/loginForm"
+                layout="@layout/login_form" />
 
-        </ScrollView>
+            <ScrollView
+                android:id="@+id/profileForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/screen_margin">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnUpdateProfile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profileForm"
-            android:layout_alignParentBottom="false"
-            android:background="@color/colorAccent"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/update"
-            android:textColor="@android:color/white" />
+                <include layout="@layout/profile_form" />
+            </ScrollView>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="0dp"
-            android:background="@android:color/white"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/action_sign_out"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="18sp" />
 
-        <ProgressBar
-            android:id="@+id/updateProgress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnUpdateProfile"
-            android:layout_alignParentBottom="false"
-            android:layout_centerHorizontal="true" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnUpdateProfile"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/btnLogout"
+                android:background="@color/colorAccent"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/update"
+                android:textColor="@android:color/white" />
 
-    </RelativeLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogout"
+                android:layout_width="196dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/white"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/action_sign_out"
+                android:textColor="@android:color/holo_red_dark" />
+
+            <ProgressBar
+                android:id="@+id/updateProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnUpdateProfile"
+                android:layout_alignParentBottom="false"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
 
 </layout>

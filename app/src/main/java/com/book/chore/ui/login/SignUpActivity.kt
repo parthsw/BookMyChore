@@ -48,8 +48,7 @@ class SignUpActivity : AppCompatActivity() {
                 startActivity(Intent(this@SignUpActivity, HomeActivity::class.java))
             }
 
-            signUpBinding.profileForm.imgProfile.setOnClickListener {
-            }
+
 
             enableRegisterButton(false)
             var emailField = signUpBinding.profileForm.edtUserEmail
@@ -83,7 +82,7 @@ class SignUpActivity : AppCompatActivity() {
                         )
                     }
 
-                    if (s.toString().isNotEmpty() && isEmailValid && isPhoneValid && addressField.text.isNotEmpty() && passwordField.text.isNotEmpty()) {
+                    if (s.toString().isNotEmpty() && isEmailValid && isPhoneValid && addressField.text!!.isNotEmpty() && passwordField.text!!.isNotEmpty()) {
                         enableRegisterButton(true)
                     } else {
                         enableRegisterButton(false)
@@ -104,7 +103,7 @@ class SignUpActivity : AppCompatActivity() {
 
             passwordField.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
-                    if (s.toString().isNotEmpty() && isEmailValid && isPhoneValid && addressField.text.isNotEmpty() && emailField.text.isNotEmpty()) {
+                    if (s.toString().isNotEmpty() && isEmailValid && isPhoneValid && addressField.text!!.isNotEmpty() && emailField.text!!.isNotEmpty()) {
                         enableRegisterButton(true)
                     } else {
                         enableRegisterButton(false)
@@ -143,7 +142,7 @@ class SignUpActivity : AppCompatActivity() {
                             this@SignUpActivity
                         )
                     }
-                    if (s.toString().isNotEmpty() && isEmailValid && isPhoneValid && addressField.text.isNotEmpty() && passwordField.text.isNotEmpty()) {
+                    if (s.toString().isNotEmpty() && isEmailValid && isPhoneValid && addressField.text!!.isNotEmpty() && passwordField.text!!.isNotEmpty()) {
                         enableRegisterButton(true)
                     } else {
                         enableRegisterButton(false)
@@ -163,7 +162,7 @@ class SignUpActivity : AppCompatActivity() {
 
             addressField.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
-                    if (s.toString().isNotEmpty() && isEmailValid && isPhoneValid && passwordField.text.isNotEmpty()) {
+                    if (s.toString().isNotEmpty() && isEmailValid && isPhoneValid && passwordField.text!!.isNotEmpty()) {
                         enableRegisterButton(true)
                     } else {
                         enableRegisterButton(false)
