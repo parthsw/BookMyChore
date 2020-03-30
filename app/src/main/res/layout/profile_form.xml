@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/profilepage_edittext_border"
+        android:visibility="gone"
         >
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edtUserName"
@@ -34,12 +35,8 @@
             android:fontFamily="@font/montserrat"
             android:padding="7dp"
             android:layout_gravity="bottom"
-            android:background="@null"
-
-            />
+            android:background="@null" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -74,6 +71,7 @@
             android:textSize="16dp"
             android:padding="7dp"
             android:background="@null"
+            android:maxLength="10"
             />
 
     </com.google.android.material.textfield.TextInputLayout>

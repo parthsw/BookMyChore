@@ -35,11 +35,24 @@
     <string name="splash_c_d">image on the splash screen</string>
     <string name="login_logo_c_d">logo on login screen</string>
 
+    <!-- Image descriptors -->
+    <string name="imgTakePhoto">Take Photo</string>
+    <string name="imgChooseFromGallery">Choose From Gallery</string>
+    <string name="imgCancel">Cancel</string>
+    <string name="imgSelectionTitle">Choose Your Profile Picture</string>
+
     <!-- Validation Errors -->
     <string name="invalidEmail">Please enter a valid email</string>
     <string name="loginFailed">Incorrect email address or password</string>
     <string name="invalidPhone">Please enter a valid phone number</string>
     <string name="registerFailed">Unable to register. Please try again.</string>
+    <string name="registerFormError">Unable to load Registration form. Please try again.</string>
+    <string name="imgModalError">Cannot open the selection modal. Please try again.</string>
+    <string name="imgFromGalleryError">Unable to Preview Selected Picture From Gallery</string>
+    <string name="imgCapturedError">Unable to Preview Captured Picture</string>
+    <string name="imgUploadError">Unable to Upload Profile Picture</string>
+    <string name="errProfileThumbnail">Unable to load Profile thumbnail</string>
+    <string name="profileFormError">Unable to load Profile information. Please try again.</string>
 
     <!-- about app -->
     <string name="about_us_info">Book My Chore is an Android application that

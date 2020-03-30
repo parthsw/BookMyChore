@@ -20,8 +20,8 @@ class Validatedata {
                 str?.let {
                     val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{4,}$"
                     val passwordMatcher = Regex(passwordPattern)
-                    if (passwordMatcher.find(str) != null)
-                       return ("perfect")
+                    //if (passwordMatcher.find(str) != null)
+                    return ("perfect")
                 } ?:  return (" your password must contain 1 uppercase,1 lower case and 1 digit")
             }
                     return (" your password must contain 1 uppercase,1 lower case and 1 digit")

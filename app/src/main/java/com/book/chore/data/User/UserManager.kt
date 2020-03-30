@@ -1,14 +1,11 @@
 package com.book.chore.data.User
 
-import android.content.Intent
-import androidx.core.content.ContextCompat.startActivity
 import com.book.chore.databinding.ProfileBinding
 import com.book.chore.events.UserCreationEvent
 import com.book.chore.events.UserSignInResultEvent
-import com.book.chore.ui.login.LoginActivity
-import com.book.chore.ui.login.home.HomeActivity
 import com.book.chore.utils.BasePrefs
 import com.book.chore.utils.ChoreConstants
+import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.profile_form.view.*
 import org.greenrobot.eventbus.EventBus
@@ -131,13 +128,14 @@ class UserManager {
                     binding.profileForm.edtUserAddress.setText(userAddress)
                     binding.profileForm.edtUserMobile.setText(userMobile)
                     binding.profileForm.edtUserPassword.setText(userPassword)
+                    Glide.with(binding.profileForm).load(userProfilePic).into(binding.profileForm.img)
                     userData(this)
                 }
             }
         }
     }
 
-    private fun fetchUserDataById(userId: String, userData: (ChoreUser?) -> Unit) {
+    fun fetchUserDataById(userId: String, userData: (ChoreUser?) -> Unit) {
         FirebaseFirestore.getInstance().collection(ChoreConstants.Collections.CHORE_USERS)
             .document(userId)
             .get().addOnSuccessListener { document ->
@@ -167,6 +165,5 @@ class UserManager {
             ChoreConstants.PrefNames.PREF_NAME_USER,
             ChoreConstants.PrefKeys.PREF_KEY_LOGGED_IN_USER_ID
         )
-
     }
 }

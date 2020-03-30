@@ -29,4 +29,11 @@ object ChoreConstants {
             const val PREF_KEY_SKIPPED_LOGIN = PREFIX_PREF_KEY + "skipped_login"
         }
     }
+
+    class Images {
+        companion object {
+            const val CAPTURE_IMAGE = 0
+            const val CHOOSE_FROM_GALLERY = 1
+        }
+    }
 }
