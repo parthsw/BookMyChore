@@ -16,9 +16,9 @@ import com.book.chore.data.User.UserManager
 import com.book.chore.databinding.HomeFragmentBinding
 import com.book.chore.ui.home.home.adapters.ChoreServicesAdapter
 import com.book.chore.ui.home.home.adapters.OnItemClickListener
-import com.bumptech.glide.Glide
-import java.lang.Exception
+import com.book.chore.ui.location.LocationFragment
 import com.book.chore.ui.services.ServicesActivity
+import com.bumptech.glide.Glide
 
 
 class HomeFragment : Fragment() {
@@ -47,6 +47,11 @@ class HomeFragment : Fragment() {
             binding.servicesList.adapter = adapter
         }
         setProfileThumbnail()
+
+        /**
+         *Loading and initializing the [LocationFragment] fragment
+         */
+        childFragmentManager.beginTransaction().add(LocationFragment(), "locationFragment").commit()
         return binding.root
     }
 
@@ -71,7 +76,11 @@ class HomeFragment : Fragment() {
                 binding.imgProfilePicHome.setImageDrawable(resources.getDrawable(R.drawable.ic_account_box_black_24dp))
             }
         } catch (e: Exception) {
-            Toast.makeText(activity, resources.getString(R.string.errProfileThumbnail), Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                activity,
+                resources.getString(R.string.errProfileThumbnail),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }
