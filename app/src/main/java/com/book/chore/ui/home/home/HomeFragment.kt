@@ -1,5 +1,6 @@
 package com.book.chore.ui.login.home.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,12 +18,12 @@ import com.book.chore.ui.home.home.adapters.ChoreServicesAdapter
 import com.book.chore.ui.home.home.adapters.OnItemClickListener
 import com.bumptech.glide.Glide
 import java.lang.Exception
+import com.book.chore.ui.services.ServicesActivity
 
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: HomeFragmentBinding
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +37,9 @@ class HomeFragment : Fragment() {
                 override fun onItemClick(item: ChoreService?) {
                     if (item != null) {
                         Toast.makeText(context, item.serviceName, Toast.LENGTH_LONG).show()
+                        //Add code to filter the task doers
+                        val i = Intent(context, ServicesActivity::class.java)
+                        startActivity(i)
                     }
                 }
             })

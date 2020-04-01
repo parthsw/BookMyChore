@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/booking_service"
+    app:startDestination="@id/confirmBookingFragment"
+    >
+
+    <fragment
+        android:id="@+id/confirmBookingFragment"
+        android:name="com.book.chore.ui.services.ConfirmBookingFragment"
+        android:label="ConfirmBookingFragment" >
+        <action
+            android:id="@+id/action_confirmBookingFragment_to_bookingConfirmedFragment"
+            app:destination="@id/bookingConfirmedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingConfirmedFragment"
+        android:name="com.book.chore.ui.services.BookingConfirmedFragment"
+        android:label="BookingConfirmedFragment" />
+</navigation>

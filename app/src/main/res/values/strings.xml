@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">BookMyChore</string>
+<!--    <string name="app_name">BookMyChore</string>-->
+    <string name="app_name">BMC</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -60,5 +61,6 @@ provides on-demand location-based household services to users. The application
 intends to improve the work-life balance of individuals who might find it challenging
 to manage their work, family, and household chores by providing a platform in the
 form of an android smartphone application</string>
+
 
 </resources>
