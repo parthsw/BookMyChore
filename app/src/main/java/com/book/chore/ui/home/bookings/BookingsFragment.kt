@@ -1,20 +1,29 @@
 package com.book.chore.ui.home.bookings
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.chore.R
+import com.book.chore.data.User.UserBookings
 import com.book.chore.data.User.UserManager
 import com.book.chore.databinding.BookingsFragmentBinding
+import com.book.chore.ui.home.bookings.adapter.UserBookingsAdapter
 import com.book.chore.ui.login.LoginViewHolder
 import com.book.chore.utils.ChoreValidators
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.lang.Exception
 
 class BookingsFragment : Fragment() {
@@ -33,6 +42,8 @@ class BookingsFragment : Fragment() {
             if (UserManager().isUserLoggedIn()) {
                 binding.loginForm.container.visibility = View.GONE
                 binding.bookingsLayout.visibility = View.VISIBLE
+                binding.recyclerView.layoutManager = LinearLayoutManager(context)
+                retrievedata()
             } else {
                 binding.loginForm.container.visibility = View.VISIBLE
                 context?.let {
@@ -133,5 +144,31 @@ class BookingsFragment : Fragment() {
 
         binding.loginForm.login.alpha = if (isEnable) 1f else 0.7f
         binding.loginForm.login.isEnabled = isEnable
+    }
+
+    private fun retrievedata() {
+        val userID = UserManager().loggedInUserId()
+        Log.i(ContentValues.TAG, userID)
+        val ref = FirebaseDatabase.getInstance().getReference(userID)
+        val bmclist = mutableListOf<UserBookings>()
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                Toast.makeText(context, "Error getting data", Toast.LENGTH_LONG).show()
+            }
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.exists()) {
+                    for (pika in p0.children) {
+                        val pikadata = pika.getValue(UserBookings::class.java)
+                        bmclist.add(pikadata!!)
+                    }
+                    binding.recyclerView.adapter= UserBookingsAdapter(this@BookingsFragment , bmclist)
+                }
+                else {
+                    binding.bookingempty.visibility = View.VISIBLE
+                }
+            }
+
+        })
+
     }
 }
