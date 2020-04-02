@@ -109,6 +109,7 @@ class HomeFragment : Fragment() {
                             Toast.makeText(context, item.serviceName, Toast.LENGTH_LONG).show()
                             //Add code to filter the task doers
                             val i = Intent(context, ServicesActivity::class.java)
+                            i.putExtra(ChoreConstants.AppConstant.SERVICE_CITY, city)
                             startActivity(i)
                         }
                     }
