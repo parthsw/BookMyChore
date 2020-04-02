@@ -1,5 +1,6 @@
 package com.book.chore.data.Doer
 
+// data model for ChoreDoer
 class ChoreDoer(){
     var user_ID: String = ""
     var userDisplayName: String = ""

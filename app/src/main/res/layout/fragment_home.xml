@@ -23,7 +23,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/book_my_chore"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    app:fontFamily="@font/montserrat" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgProfilePicHome"

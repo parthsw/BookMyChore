@@ -26,6 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.51" />
+
         <TextView
             android:id="@+id/nameTxt"
             android:layout_width="wrap_content"
@@ -34,6 +35,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="198dp"
             android:layout_marginBottom="50dp"
+            android:fontFamily="@font/montserrat_bold"
             android:gravity="start"
             android:text="@string/name"
             android:textAlignment="textStart"
@@ -52,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:drawableStart="@drawable/star"
+            android:fontFamily="@font/montserrat"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             android:text="@string/_4_5"
@@ -64,6 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="50dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/date"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/nameTxt"
@@ -76,11 +80,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="24dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/servicename"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/nameTxt"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/profileImg"/>
+            app:layout_constraintStart_toEndOf="@+id/profileImg" />
 
         <TextView
             android:id="@+id/Dcost"
@@ -88,6 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="20dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/hourlyrate"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
