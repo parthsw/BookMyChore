@@ -20,7 +20,8 @@ import com.google.firebase.database.ValueEventListener
 class TDManager{
     fun retrieveData(
         context: Context,
-        recyclerView: RecyclerView
+        recyclerView: RecyclerView,
+        city: String
     ) {
         val ref = FirebaseDatabase.getInstance().getReference("task_doer")
         val doerList = mutableListOf<ChoreDoer>()
@@ -35,7 +36,11 @@ class TDManager{
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0!!.exists()) {
                     for (pika in p0.children) {
+
                         val pikadata = pika.getValue(ChoreDoer::class.java)
+                        if((city.isNotEmpty()|| city.isNotBlank()) && pikadata?.city!=city){
+                            continue
+                        }
                         doerList.add(pikadata!!)
                         Log.i("TAG", "output${pikadata!!.rating.toString()}")
                         Log.i("TAG", "output${doerList.size.toString()}")

@@ -11,4 +11,5 @@ class ChoreDoer(){
     var service_type = arrayListOf<String>()
     var userLongDesc: String = ""
     lateinit var userComments: Map<String, List<Comment>>
+    var city : String = ""
 }

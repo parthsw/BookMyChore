@@ -36,4 +36,11 @@ object ChoreConstants {
             const val CHOOSE_FROM_GALLERY = 1
         }
     }
+
+    class AppConstant {
+        companion object {
+            const val SERVICE_CITY = "service_city"
+            const val LOCATION = "location "
+        }
+    }
 }

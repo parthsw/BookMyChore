@@ -20,7 +20,10 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.book.chore.R
+import com.book.chore.sharedmodel.SharedViewModel
+import com.book.chore.utils.ChoreConstants
 import com.book.chore.utils.LocationHelper
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.location.*
@@ -39,24 +42,24 @@ import java.util.*
  */
 class LocationFragment : Fragment(), PlaceSelectionListener {
 
+    private var sharedDataMap: MutableMap<String, Any>
+    private lateinit var viewModel: SharedViewModel
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var autocompleteSupportFragment: AutocompleteSupportFragment
     private var location = ""
     private val PERMISSION_ID = 42
     private val googleApiKey = "AIzaSyCBywthrPsR7bN8yHeTqIpHr6XCKAbz43g"
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        if (!Places.isInitialized()) {
-            getContext()?.let { Places.initialize(it, googleApiKey, Locale.US) };
-        }
+    init {
+        sharedDataMap = mutableMapOf<String, Any>()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel =
+            getParentFragment()?.let { ViewModelProvider(it).get(SharedViewModel::class.java) }!!
         if (!Places.isInitialized()) {
             getContext()?.let { Places.initialize(it, googleApiKey, Locale.US) };
         }
@@ -66,9 +69,15 @@ class LocationFragment : Fragment(), PlaceSelectionListener {
 
         autocompleteSupportFragment = places_autocomplete_edit_text as AutocompleteSupportFragment
         autocompleteSupportFragment.setCountries(LocationHelper.COUNTRY_SUPPORTED)
-        autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.ADDRESS))
+        autocompleteSupportFragment.setPlaceFields(
+            Arrays.asList(
+                Place.Field.ADDRESS,
+                Place.Field.LAT_LNG
+            )
+        )
         autocompleteSupportFragment.setHint("Enter the location here")
         autocompleteSupportFragment.setOnPlaceSelectedListener(this)
+
 
         val locationButton2 = getActivity()?.findViewById<Button>(R.id.locationButton)
         locationButton2?.setOnClickListener {
@@ -77,7 +86,12 @@ class LocationFragment : Fragment(), PlaceSelectionListener {
                     fusedLocationProviderClient.lastLocation.addOnCompleteListener(this.requireActivity()) { task ->
                         var location: Location? = task.result
                         if (location != null) {
-                            getCityName(location)
+                            var city = getCityName(location.latitude, location.longitude)
+                            sharedDataMap.put(ChoreConstants.AppConstant.SERVICE_CITY, city)
+                            Log.i("sharedDataMap", sharedDataMap.toString())
+                            viewModel.setSharedData(sharedDataMap)
+
+                            Log.i("viewModel in location", viewModel.getSharedData().toString())
                         };
                     }
                 } else {
@@ -96,12 +110,18 @@ class LocationFragment : Fragment(), PlaceSelectionListener {
 
 
     override fun onPlaceSelected(p0: Place) {
-        Log.i("place:", p0.address.toString())
+        Log.i("place:", p0.toString())
 
         location = p0.address.toString()
-        Handler().postDelayed({
-            autocompleteSupportFragment.setText(location);
-        }, 50)
+        setLocationInSearchBar(location)
+
+        if (location.isNotEmpty() || location.isNotBlank()) {
+            var city = getCityName(p0.getLatLng()!!.latitude, p0.getLatLng()!!.longitude)
+            Log.i("city", city)
+
+            sharedDataMap.put(ChoreConstants.AppConstant.SERVICE_CITY, city)
+            viewModel.setSharedData(sharedDataMap)
+        }
     }
 
     override fun onError(p0: Status) {}
@@ -173,22 +193,31 @@ class LocationFragment : Fragment(), PlaceSelectionListener {
         }
     }
 
-    private fun getCityName(location: Location) {
+    private fun getCityName(lat: Double, lng: Double): String {
+
+        var city = "";
 
         var geoCoder: Geocoder
         geoCoder = Geocoder(this.requireContext(), Locale.CANADA)
 
-        var list: List<Address> = geoCoder.getFromLocation(location.latitude, location.longitude, 1)
+        var list: List<Address> = geoCoder.getFromLocation(lat, lng, 1)
         Log.i("address list", list.toString())
 
         var fullAddress = list.get(0).getAddressLine(0)
         Log.i("fullAddress", fullAddress)
 
-        var city = list.get(0).locality
+        city = list.get(0).locality
         Log.i("city", city)
 
+        setLocationInSearchBar(fullAddress)
+
+        return city
+    }
+
+
+    private fun setLocationInSearchBar(address: String) {
         Handler().postDelayed({
-            autocompleteSupportFragment.setText(fullAddress);
+            autocompleteSupportFragment.setText(address);
         }, 50)
     }
 }

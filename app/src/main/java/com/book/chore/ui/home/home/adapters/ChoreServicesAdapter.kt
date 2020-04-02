@@ -30,6 +30,10 @@ class ChoreServicesAdapter(private val choreServicesList: MutableList<ChoreServi
     }
 
     override fun onBindViewHolder(holder: ChoreServiceViewHolder, position: Int) {
+
+
+
+
         holder.bind(choreServicesList[position], listener)
     }
 }
