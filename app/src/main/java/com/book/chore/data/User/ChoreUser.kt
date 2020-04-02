@@ -1,5 +1,6 @@
 package com.book.chore.data.User
 
+// data model for ChoreUser
 data class ChoreUser(
     var userID: String = "",
     var userDisplayName: String = "",

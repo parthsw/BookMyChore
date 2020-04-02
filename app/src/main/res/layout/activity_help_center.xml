@@ -1,83 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-        <RelativeLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            xmlns:android="http://schemas.android.com/apk/res/android" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp">
 
-            <TextView
-                android:id="@+id/tv0"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Booking Related Query"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorAccent"/>
+    <TextView
+        android:id="@+id/tv0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Booking Related Query"
+        android:textColor="@color/colorAccent"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
-            <ExpandableListView
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/expandableview"
-                android:layout_below="@+id/tv0"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:context=".ui.home.help.Faq_activity">
-            </ExpandableListView>
+    <ExpandableListView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/expandableview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv0"
+        tools:context=".ui.home.help.Faq_activity"></ExpandableListView>
 
-                <TextView
-                    android:id="@+id/tv1"
-                    android:layout_below="@+id/expandableview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Payment related query"
-                    android:textSize="16dp"
-                    android:layout_marginTop="20dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorAccent"
-                   />
-                <ExpandableListView
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/expandableview0"
-                    android:layout_below="@+id/tv1"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:context=".ui.home.help.Faq_activity">
-                </ExpandableListView>
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/expandableview"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Payment related query"
+        android:textColor="@color/colorAccent"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv02"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/expandableview0"
-                    android:text="Still have question?"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/colorAccent"
-                    />
-                <EditText
-                    android:id="@+id/ed_user_question"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="10dp"
-                />
-                <Button
-                    android:id="@+id/btn_submit_question"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ask your question"
-                    android:textSize="14dp"
-                    android:padding="10dp"
-                    android:layout_below="@+id/tv02"
-                    android:layout_centerHorizontal="true"
-                    android:background="@color/colorAccent"
-                    android:textColor="#ffffff"
-                    android:layout_marginTop="10dp"/>
+    <ExpandableListView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/expandableview0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv1"
+        tools:context=".ui.home.help.Faq_activity"></ExpandableListView>
 
-         </RelativeLayout>
+    <TextView
+        android:id="@+id/tv02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/expandableview0"
+        android:layout_marginTop="20dp"
+        android:text="Still have question?"
+        android:textColor="@color/colorAccent"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/ed_user_question"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_bold" />
+
+    <Button
+        android:id="@+id/btn_submit_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv02"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorAccent"
+        android:padding="10dp"
+        android:text="Ask your question"
+        android:textColor="#ffffff"
+        android:textSize="14dp" />
+
+</RelativeLayout>
 
 

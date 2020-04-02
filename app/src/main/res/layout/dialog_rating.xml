@@ -3,15 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="15dp">
+
     <TextView
         android:id="@+id/tv_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rating &amp; Review"
         android:layout_centerHorizontal="true"
-        android:textSize="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Rating &amp; Review"
         android:textColor="@color/colorAccent"
-        android:textStyle="bold"/>
+        android:textSize="16dp"
+        android:textStyle="bold" />
     <RatingBar
         android:id="@+id/ratingbar"
         android:layout_below="@+id/tv_heading"
@@ -35,17 +37,19 @@
         android:inputType="textMultiLine"
         android:lines="3"
         />
+
     <Button
         android:id="@+id/btn_submit_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_below="@+id/user_review"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:background="@color/colorAccent"
-        android:textColor="#ffffff"
+        android:fontFamily="@font/montserrat_bold"
         android:padding="10dp"
-        android:text="Submit"/>
+        android:text="Submit"
+        android:textColor="#ffffff" />
 
 
 

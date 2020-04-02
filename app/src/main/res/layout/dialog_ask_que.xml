@@ -4,16 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="15dp">
-<TextView
-    android:id="@+id/tv_header"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Ask your Question"
-    android:textSize="16dp"
-    android:textStyle="bold"
-    android:textColor="@color/colorAccent"
-    android:layout_centerHorizontal="true"
-    />
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Ask your Question"
+        android:textColor="@color/colorAccent"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
 <EditText
     android:layout_below="@+id/tv_header"
@@ -27,18 +28,19 @@
     android:lines="4"
     android:hint="@string/user_question"
     android:inputType="textMultiLine" />
-<Button
-    android:id="@+id/submit_query"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Submit query"
-    android:padding="10dp"
-    android:layout_below="@+id/ed_user_query_dialog"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="20dp"
-    android:background="@color/colorAccent"
-    android:textColor="#ffffff"
+
+    <Button
+        android:id="@+id/submit_query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ed_user_query_dialog"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorAccent"
+        android:fontFamily="@font/montserrat_bold"
+        android:padding="10dp"
+        android:text="Submit query"
 
 
-    />
+        android:textColor="#ffffff" />
 </RelativeLayout>

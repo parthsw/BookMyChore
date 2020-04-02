@@ -1,5 +1,6 @@
 package com.book.chore.data.Doer
 
+// data model for Comment
 class Comment{
     var comment: String = ""
     var rating: String = ""
