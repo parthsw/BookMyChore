@@ -57,9 +57,15 @@ class SignUpActivity : AppCompatActivity() {
 
             signUpBinding.profileForm.img.setOnClickListener { selectOrCaptureImage(this) }
             signUpBinding.signUp.setOnClickListener {
+
                 signUpBinding.loading.visibility = View.VISIBLE
                 signUpBinding.signUp.visibility = View.GONE
-                uploadImage()
+                if(picturePath != null) {
+                    uploadImage()
+                } else {
+                    createUser("")
+                }
+
             }
         } catch (e: Exception) {
             Toast.makeText(

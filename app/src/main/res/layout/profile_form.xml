@@ -16,7 +16,7 @@
             android:layout_width="@dimen/profile_pic_size"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            app:srcCompat="@drawable/ic_account_box_black_24dp" />
+            app:srcCompat="@drawable/upload_picture" />
     </FrameLayout>
 
     <com.google.android.material.textfield.TextInputLayout

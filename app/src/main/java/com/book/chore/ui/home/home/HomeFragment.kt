@@ -78,7 +78,7 @@ class HomeFragment : Fragment() {
                         binding.imgProfilePicHome.setImageDrawable(resources.getDrawable(R.drawable.ic_account_box_black_24dp))
                     } else {
                         with(it) {
-                            if (userProfilePic == "") {
+                            if (userProfilePic == "null") {
                                 binding.imgProfilePicHome.setImageDrawable(resources.getDrawable(R.drawable.ic_account_box_black_24dp))
                             } else {
                                 Glide.with(this@HomeFragment).load(userProfilePic)

@@ -65,6 +65,8 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+
+
     private fun renderViews() {
         binding.updateProgress.visibility = View.GONE
         if (UserManager().isUserLoggedIn()) {
@@ -78,7 +80,7 @@ class ProfileFragment : Fragment() {
             }
 
             binding.btnUpdateProfile.setOnClickListener {
-                if(picturePath.toString() != "" || picturePath != null) {
+                if(picturePath != null) {
                     uploadImage()
                 } else {
                     updateUserProfile(picturePath.toString())
@@ -100,6 +102,7 @@ class ProfileFragment : Fragment() {
         } else {
             binding.loginForm.container.visibility = View.VISIBLE
             binding.btnLogout.visibility = View.GONE
+            binding.profileForm.img.setImageDrawable(resources.getDrawable(R.drawable.upload_picture))
             context?.let {
                 LoginViewHolder().bindData(binding.loginForm, it) {
                     activity?.finish()

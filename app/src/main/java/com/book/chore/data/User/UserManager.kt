@@ -1,5 +1,7 @@
 package com.book.chore.data.User
 
+import android.graphics.drawable.Drawable
+import com.book.chore.R
 import com.book.chore.databinding.ProfileBinding
 import com.book.chore.events.UserCreationEvent
 import com.book.chore.events.UserSignInResultEvent
@@ -9,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.profile_form.view.*
 import org.greenrobot.eventbus.EventBus
+
 
 class UserManager {
     fun showLoginScreen(): Boolean {
@@ -119,8 +122,12 @@ class UserManager {
 
     fun renderUserData(userId: String, binding: ProfileBinding, userData: (ChoreUser?) -> Unit) {
         fetchUserDataById(userId) {
+
+            val resImg: Drawable = binding.profileForm.resources.getDrawable(R.drawable.upload_picture)
+
             if (it == null) {
                 userData(null)
+                binding.profileForm.img.setImageDrawable(R.drawable.upload_picture as Drawable)
             } else {
                 with(it) {
                     binding.profileForm.edtUserName.setText(userID)
@@ -128,7 +135,11 @@ class UserManager {
                     binding.profileForm.edtUserAddress.setText(userAddress)
                     binding.profileForm.edtUserMobile.setText(userMobile)
                     binding.profileForm.edtUserPassword.setText(userPassword)
-                    Glide.with(binding.profileForm).load(userProfilePic).into(binding.profileForm.img)
+                    if (userProfilePic == "null") {
+                        binding.profileForm.img.setImageDrawable(resImg)
+                    } else {
+                        Glide.with(binding.profileForm).load(userProfilePic).into(binding.profileForm.img)
+                    }
                     userData(this)
                 }
             }
