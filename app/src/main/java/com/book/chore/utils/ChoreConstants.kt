@@ -43,4 +43,16 @@ object ChoreConstants {
             const val LOCATION = "location "
         }
     }
+
+    class AlertConstant{
+        companion object {
+            const val SERVICE_SELECT_LOCATION_TITLE = "Location is not selected"
+            const val SERVICE_SELECT_LOCATION_MESSAGE = "Please enter your location to see the available services."
+            const val OKAY_BUTTON = "OK"
+            const val PROCEED = "OK"
+
+
+        }
+    }
+
 }
