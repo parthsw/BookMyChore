@@ -127,7 +127,7 @@ class UserManager {
 
             if (it == null) {
                 userData(null)
-                binding.profileForm.img.setImageDrawable(R.drawable.upload_picture as Drawable)
+                binding.profileForm.img.setImageDrawable(resImg)
             } else {
                 with(it) {
                     binding.profileForm.edtUserName.setText(userID)
@@ -135,7 +135,7 @@ class UserManager {
                     binding.profileForm.edtUserAddress.setText(userAddress)
                     binding.profileForm.edtUserMobile.setText(userMobile)
                     binding.profileForm.edtUserPassword.setText(userPassword)
-                    if (userProfilePic == "null") {
+                    if (userProfilePic == "null" || userProfilePic == "") {
                         binding.profileForm.img.setImageDrawable(resImg)
                     } else {
                         Glide.with(binding.profileForm).load(userProfilePic).into(binding.profileForm.img)
