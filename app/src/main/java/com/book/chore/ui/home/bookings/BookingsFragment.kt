@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.chore.R
 import com.book.chore.data.User.UserBookings
+import com.book.chore.data.User.UserHistory
 import com.book.chore.data.User.UserManager
 import com.book.chore.databinding.BookingsFragmentBinding
 import com.book.chore.ui.home.bookings.adapter.UserBookingsAdapter
@@ -150,7 +151,7 @@ class BookingsFragment : Fragment() {
         val userID = UserManager().loggedInUserId()
         Log.i(ContentValues.TAG, userID)
         val ref = FirebaseDatabase.getInstance().getReference(userID)
-        val bmclist = mutableListOf<UserBookings>()
+        val bmclist = mutableListOf<UserHistory>()
         ref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 Toast.makeText(context, "Error getting data", Toast.LENGTH_LONG).show()
@@ -158,8 +159,9 @@ class BookingsFragment : Fragment() {
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()) {
                     for (pika in p0.children) {
-                        val pikadata = pika.getValue(UserBookings::class.java)
+                        val pikadata = pika.getValue(UserHistory::class.java)
                         bmclist.add(pikadata!!)
+                        Log.i(ContentValues.TAG, "$pikadata")
                     }
                     binding.recyclerView.adapter= UserBookingsAdapter(this@BookingsFragment , bmclist)
                 }

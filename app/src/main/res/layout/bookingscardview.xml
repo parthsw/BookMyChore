@@ -48,31 +48,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/RValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:drawableStart="@drawable/star"
-            android:fontFamily="@font/montserrat"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:text="@string/_4_5"
-            app:layout_constraintBottom_toBottomOf="@+id/profileImg"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/Dvalue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="50dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/date"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/nameTxt"
-            app:layout_constraintTop_toTopOf="@+id/nameTxt"
-            app:layout_constraintVertical_bias="0.454" />
+            app:layout_constraintEnd_toEndOf="@+id/Dcost"
+            app:layout_constraintTop_toTopOf="@+id/DserviceName" />
 
         <TextView
             android:id="@+id/DserviceName"
@@ -94,7 +78,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/montserrat"
-            android:text="@string/hourlyrate"
+            android:text="@string/totalcost"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

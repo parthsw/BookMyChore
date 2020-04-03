@@ -8,13 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.book.chore.R
 import com.book.chore.data.User.UserBookings
+import com.book.chore.data.User.UserHistory
 import com.book.chore.ui.home.bookings.BookingsFragment
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.bookingscardview.view.*
 
 class UserBookingsAdapter(
     private val context: BookingsFragment,
-    private val posters: List<UserBookings>
+    private val posters: List<UserHistory>
 ) : RecyclerView.Adapter<UserBookingsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -29,9 +30,8 @@ class UserBookingsAdapter(
         //Glide is used to load an image using a url
         Glide.with(context).load(user.profileurl).into(holder.profileImg)
         holder.nameTxt.text = user.Name
-        //holder.RValue.text = user.RatingValue.toString()
         holder.Dvalue.text = user.Date
-        //holder.Dcost.text = user.hourlyRate
+        holder.Dcost.text = user.totalCost
         holder.DserviceName.text = user.ServiceName
     }
 
@@ -40,12 +40,10 @@ class UserBookingsAdapter(
             get() = itemView.profileImg
         val nameTxt: TextView
             get() = itemView.nameTxt
-//        val RValue: TextView
-//            get() = itemView.RValue
         val Dvalue: TextView
             get() = itemView.Dvalue
-//        val Dcost: TextView
-//            get() = itemView.Dcost
+        val Dcost: TextView
+            get() = itemView.Dcost
         val DserviceName: TextView
             get() = itemView.DserviceName
 
