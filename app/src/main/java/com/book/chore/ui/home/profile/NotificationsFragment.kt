@@ -79,6 +79,22 @@ class ProfileFragment : Fragment() {
                 user = it
             }
 
+            binding.profileForm.edtUserName.addTextChangedListener { username ->
+                user?.userDisplayName = username.toString()
+            }
+            binding.profileForm.edtUserEmail.addTextChangedListener { userEmail ->
+                user?.userEmail = userEmail.toString()
+            }
+            binding.profileForm.edtUserMobile.addTextChangedListener { userMobile ->
+                user?.userMobile = userMobile.toString()
+            }
+            binding.profileForm.edtUserPassword.addTextChangedListener { userPassword ->
+                user?.userPassword = userPassword.toString()
+            }
+            binding.profileForm.edtUserAddress.addTextChangedListener { userAddress ->
+                user?.userAddress = userAddress.toString()
+            }
+
             binding.btnUpdateProfile.setOnClickListener {
                 if(picturePath != null) {
                     uploadImage()
@@ -238,6 +254,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun updateUserProfile(img: String) {
+
         if (obj.validatepassword(edtUserPassword.text.toString())!="perfect")
         {
             edtUserPassword.error = obj.validatepassword(edtUserPassword.text.toString())
@@ -259,7 +276,9 @@ class ProfileFragment : Fragment() {
             edtUserAddress.error = obj.validateaddress(edtUserAddress.text.toString())
         }
         else {
-            user?.userProfilePic = img
+            if(user?.userProfilePic == null || user?.userProfilePic == "") {
+                user?.userProfilePic = if (img == "null") { "" } else { img }
+            }
             user?.let { it1 ->
                 binding.updateProgress.visibility = View.VISIBLE
                 binding.btnUpdateProfile.isEnabled = false
@@ -272,21 +291,6 @@ class ProfileFragment : Fragment() {
                     Toast.makeText(activity, resources.getString(R.string.updateSuccess), Toast.LENGTH_SHORT).show()
                 }
             }
-        }
-        binding.profileForm.edtUserName.addTextChangedListener { username ->
-            user?.userDisplayName = username.toString()
-        }
-        binding.profileForm.edtUserEmail.addTextChangedListener { userEmail ->
-            user?.userEmail = userEmail.toString()
-        }
-        binding.profileForm.edtUserMobile.addTextChangedListener { userMobile ->
-            user?.userMobile = userMobile.toString()
-        }
-        binding.profileForm.edtUserPassword.addTextChangedListener { userPassword ->
-            user?.userPassword = userPassword.toString()
-        }
-        binding.profileForm.edtUserAddress.addTextChangedListener { userAddress ->
-            user?.userAddress = userAddress.toString()
         }
     }
 
