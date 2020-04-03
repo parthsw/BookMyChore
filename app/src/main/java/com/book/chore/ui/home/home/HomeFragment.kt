@@ -24,6 +24,7 @@ import com.book.chore.ui.location.LocationFragment
 import com.book.chore.ui.services.ServicesActivity
 import com.book.chore.utils.ChoreConstants
 import com.bumptech.glide.Glide
+import java.lang.Exception
 
 
 class HomeFragment : Fragment() {
@@ -110,6 +111,7 @@ class HomeFragment : Fragment() {
                             //Add code to filter the task doers
                             val i = Intent(context, ServicesActivity::class.java)
                             i.putExtra(ChoreConstants.AppConstant.SERVICE_CITY, city)
+			                i.putExtra("serviceType",item.serviceName)
                             startActivity(i)
                         }
                     }
@@ -133,6 +135,7 @@ class HomeFragment : Fragment() {
                             //Add code to filter the task doers
                             val i = Intent(context, ServicesActivity::class.java)
                             i.putExtra(ChoreConstants.AppConstant.SERVICE_CITY, city)
+			                i.putExtra("serviceType",item.serviceName)
                             startActivity(i)
                         }
                     }

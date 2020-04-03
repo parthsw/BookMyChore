@@ -31,6 +31,7 @@
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.login.SignUpActivity" />
         <activity android:name=".ui.services.ServicesActivity" />
+        <activity android:name=".ui.services.SFHolder" />
         <activity android:name=".ui.home.help.Faq_activity" />
         <provider
             android:name="androidx.core.content.FileProvider"
