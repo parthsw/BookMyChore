@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -25,13 +24,13 @@ import com.book.chore.ui.location.LocationFragment
 import com.book.chore.ui.services.ServicesActivity
 import com.book.chore.utils.ChoreConstants
 import com.bumptech.glide.Glide
-
+import java.lang.Exception
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: HomeFragmentBinding
     private lateinit var viewModel: SharedViewModel
-    private var city = "default"
+    private var city = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,7 +60,7 @@ class HomeFragment : Fragment() {
                 override fun onChanged(t: MutableMap<String, Any>?) {
                     if (t != null) {
                         city = t.get(ChoreConstants.AppConstant.SERVICE_CITY) as String
-                        Log.i("Location changed: ", city)
+                        Log.i("Location changed: ",city)
                         fetchServices()
                     }
                 }
@@ -101,21 +100,18 @@ class HomeFragment : Fragment() {
 
     private fun fetchServices() {
 
-        if (city == "default") {
+        if (city == "") {
             ServiceManager().fetchAvailableServices {
                 Log.i("service list", it.toString())
                 val adapter = ChoreServicesAdapter(it, object : OnItemClickListener {
                     override fun onItemClick(item: ChoreService?) {
-
-                        val builder = AlertDialog.Builder(this@HomeFragment.requireContext())
-                        builder.setTitle(ChoreConstants.AlertConstant.SERVICE_SELECT_LOCATION_TITLE)
-                        builder.setMessage(ChoreConstants.AlertConstant.SERVICE_SELECT_LOCATION_MESSAGE)
-                        builder.setPositiveButton(ChoreConstants.AlertConstant.OKAY_BUTTON) { dialog, which ->
+                        if (item != null) {
+                            Toast.makeText(context, item.serviceName, Toast.LENGTH_LONG).show()
+                            //Add code to filter the task doers
+                            val i = Intent(context, ServicesActivity::class.java)
+                            i.putExtra(ChoreConstants.AppConstant.SERVICE_CITY, city)
+                            startActivity(i)
                         }
-                        val alert = builder.create()
-                        alert.setTitle(ChoreConstants.AlertConstant.SERVICE_SELECT_LOCATION_TITLE)
-                        alert.show()
-
                     }
                 })
                 binding.servicesList.layoutManager = GridLayoutManager(context, 2)
@@ -123,49 +119,27 @@ class HomeFragment : Fragment() {
             }
         } else {
             Log.i("Fetching services for: ", city)
-//          ServiceManager().fetchAvailableServicesWithCity(city) {
-//                Log.i("service list with city", it.toString())
-//
-//                if(it.isEmpty()){
-//                    Toast.makeText(getContext(),"Services not found for $city",Toast.LENGTH_SHORT).show()
-//                }
-//
-//                val adapter = ChoreServicesAdapter(it, object : OnItemClickListener {
-//                    override fun onItemClick(item: ChoreService?) {
-//                        if (item != null) {
-//                            Toast.makeText(context, item.serviceName, Toast.LENGTH_LONG).show()
-//                            //Add code to filter the task doers
-//                            val i = Intent(context, ServicesActivity::class.java)
-//                            i.putExtra(ChoreConstants.AppConstant.SERVICE_CITY, city)
-//                            startActivity(i)
-//                        }
-//                    }
-//                })
-//                binding.servicesList.layoutManager = GridLayoutManager(context, 2)
-//                binding.servicesList.adapter = adapter
-//            }
+            ServiceManager().fetchAvailableServicesWithCity(city) {
+                Log.i("service list with city", it.toString())
 
-
-            var servicesList = ServiceManager().fetchAvailableServicesWithCity(city){}
-            val adapter = ChoreServicesAdapter(servicesList, object : OnItemClickListener {
-                override fun onItemClick(item: ChoreService?) {
-
-                    if (servicesList.isEmpty()){
-                        Toast.makeText(getContext(),"Services not found for $city",Toast.LENGTH_SHORT).show()
-                    }
-
-                    if (item != null) {
-                        Toast.makeText(context, item.serviceName, Toast.LENGTH_LONG).show()
-                        //Add code to filter the task doers
-                        val i = Intent(context, ServicesActivity::class.java)
-                        i.putExtra(ChoreConstants.AppConstant.SERVICE_CITY, city)
-                        startActivity(i)
-                    }
+                if(it.isEmpty()){
+                    Toast.makeText(getContext(),"Services not found for $city",Toast.LENGTH_SHORT).show()
                 }
-            })
-            binding.servicesList.layoutManager = GridLayoutManager(context, 2)
-            binding.servicesList.adapter = adapter
 
+                val adapter = ChoreServicesAdapter(it, object : OnItemClickListener {
+                    override fun onItemClick(item: ChoreService?) {
+                        if (item != null) {
+                            Toast.makeText(context, item.serviceName, Toast.LENGTH_LONG).show()
+                            //Add code to filter the task doers
+                            val i = Intent(context, ServicesActivity::class.java)
+                            i.putExtra(ChoreConstants.AppConstant.SERVICE_CITY, city)
+                            startActivity(i)
+                        }
+                    }
+                })
+                binding.servicesList.layoutManager = GridLayoutManager(context, 2)
+                binding.servicesList.adapter = adapter
+            }
         }
     }
 }

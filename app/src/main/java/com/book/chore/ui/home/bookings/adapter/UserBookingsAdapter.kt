@@ -29,9 +29,9 @@ class UserBookingsAdapter(
         //Glide is used to load an image using a url
         Glide.with(context).load(user.profileurl).into(holder.profileImg)
         holder.nameTxt.text = user.Name
-        holder.RValue.text = user.RatingValue.toString()
+        //holder.RValue.text = user.RatingValue.toString()
         holder.Dvalue.text = user.Date
-        holder.Dcost.text = user.hourlyRate
+        //holder.Dcost.text = user.hourlyRate
         holder.DserviceName.text = user.ServiceName
     }
 
@@ -40,12 +40,12 @@ class UserBookingsAdapter(
             get() = itemView.profileImg
         val nameTxt: TextView
             get() = itemView.nameTxt
-        val RValue: TextView
-            get() = itemView.RValue
+//        val RValue: TextView
+//            get() = itemView.RValue
         val Dvalue: TextView
             get() = itemView.Dvalue
-        val Dcost: TextView
-            get() = itemView.Dcost
+//        val Dcost: TextView
+//            get() = itemView.Dcost
         val DserviceName: TextView
             get() = itemView.DserviceName
 

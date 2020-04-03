@@ -7,11 +7,9 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.book.chore.R
-import com.book.chore.ui.services.ConfirmBookingFragment
 import com.book.chore.ui.services.OnTaskDoerItemClickListener
 import com.book.chore.ui.services.SFHolder
 import com.book.chore.ui.services.ServicesAdapter
-import com.google.common.eventbus.EventBus
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -21,6 +19,7 @@ class TDManager{
     fun retrieveData(
         context: Context,
         recyclerView: RecyclerView,
+        serviceType: String,
         city: String
     ) {
         val ref = FirebaseDatabase.getInstance().getReference("task_doer")
@@ -49,17 +48,13 @@ class TDManager{
                         OnTaskDoerItemClickListener {
                         override fun onItemClick(item: ChoreDoer?) {
                             if (item != null) {
-                                Toast.makeText(context, item.userDisplayName, Toast.LENGTH_LONG).show()
-//                                val fragment = ConfirmBookingFragment()
-//                                fragment.arguments = intent.extras
-//                                supportFragmentManager.beginTransaction()
-//                                    .add(R.id.task_doers_details,fragment)
-//                                    .commit()
                                 val intent = Intent(context, SFHolder::class.java)
+                                intent.putExtra("taskerID",item.user_ID)
+                                intent.putExtra("tasker",item.userDisplayName)
+                                intent.putExtra("taskerRate",item.hourlyRate)
+                                intent.putExtra("taskType",serviceType)
+                                intent.putExtra("profileURL", item.userProfilePic)
                                 context.startActivity(intent)
-
-                                //EventBus.getDefault().post(UserCreationEvent())
-
                             }
                         }
                     })

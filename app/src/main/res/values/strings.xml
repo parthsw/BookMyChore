@@ -63,7 +63,6 @@ to manage their work, family, and household chores by providing a platform in th
 form of an android smartphone application</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="no_bookings_found">No Bookings Found!</string>
     <string name="profileimg">profileimg</string>
     <string name="name">name</string>
@@ -71,6 +70,12 @@ form of an android smartphone application</string>
     <string name="date">date</string>
     <string name="servicename">servicename</string>
     <string name="hourlyrate">hourlyrate</string>
+
+
+
+    <string name="bookingConfirmation">We are pleased to inform you that your booking request and been received and confirmed.</string>
+    <string name="thankYou">Your booking is confirmed. Thank You!</string>
+    <string name="bookingDetails">Booking Details</string>
 
 
 </resources>

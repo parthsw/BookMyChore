@@ -14,18 +14,11 @@ class ServicesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_services)
+	    setContentView(R.layout.activity_services)
         recyclerView.layoutManager = LinearLayoutManager(this)
-
+        var serviceType = intent.getStringExtra("serviceType")
         val city = intent.getStringExtra(ChoreConstants.AppConstant.SERVICE_CITY)
-        TDManager().retrieveData (this@ServicesActivity, recyclerView, city)
-
-//        val fragment = ConfirmBookingFragment()
-//        fragment.arguments = intent.extras
-//        supportFragmentManager.beginTransaction()
-//            .add(R.id.task_doers_details,fragment)
-//            .commit()
-
+        TDManager().retrieveData (this@ServicesActivity, recyclerView, serviceType, city)
     }
 
     private fun finishActivity() {
